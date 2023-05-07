@@ -8,8 +8,6 @@ def positive_assert_name(name):
     kit = sender_stand_request.get_kit_body(name)
     kits_response = sender_stand_request.get_kits(authToken, kit)
 
-    # print(kits_response.json());
-    # Проверяется, что код ответа равен 201
     assert kits_response.status_code == 201
     assert kits_response.json()["name"] == kit["name"];
 
@@ -19,8 +17,6 @@ def negative_assert_name(name):
     body = sender_stand_request.get_kit_body(name)
     kits_response = sender_stand_request.get_kits(authToken, body)
 
-    # print(kits_response.json());
-    # Проверяется, что код ответа равен 201
     assert kits_response.status_code == 400
 
 def test_create_kit_1_letter_in_kit_body_get_success_response():
@@ -55,7 +51,6 @@ def test_create_kit_no_params_in_kit_body_get_failed_response():
     kits_response = sender_stand_request.get_kits(authToken, {})
 
     print(kits_response.json());
-    # Проверяется, что код ответа равен 201
     assert kits_response.status_code == 400
 
 

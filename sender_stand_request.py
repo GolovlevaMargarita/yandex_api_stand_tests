@@ -16,15 +16,7 @@ def get_kits(authToken, kit_data):
 
     return requests.post(configuration.URL_SERVICE + configuration.CREATE_MAIN_KITS_PATH, headers=headers, json=kit_data);
 
-# authToken = get_auth_token();
-#
-# kits_response = get_kits(authToken);
-# kits = kits_response.json();
-#
-# print(kits);
 
-# Тест 1. Успешное создание пользователя
-# Параметр fisrtName состоит из 2 символов
 
 
 
