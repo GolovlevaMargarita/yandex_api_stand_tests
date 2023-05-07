@@ -2,33 +2,29 @@ import configuration
 import requests
 import data
 
-def get_docs():
-    return requests.get(configuration.URL_SERVICE + configuration.DOC_PATH)
+def get_kit_body(name):
+    current_name = data.kit_body.copy()
+    current_name["name"] = name
+    return current_name
+def get_auth_token():
+    response = requests.post(configuration.URL_SERVICE + configuration.CREATE_USER_PATH, headers=data.headers, json=data.user_body);
+    return response.json()['authToken'];
+def get_kits(authToken, kit_data):
+    global data;
+    headers = data.headers.copy();
+    headers["Authorization"] = "Bearer " + authToken;
 
-def get_logs():
-    return requests.get(configuration.URL_SERVICE + configuration.LOG_MAIN_PATH, params={"count":20})
+    return requests.post(configuration.URL_SERVICE + configuration.CREATE_MAIN_KITS_PATH, headers=headers, json=kit_data);
 
-def get_users_table():
-    return requests.get(configuration.URL_SERVICE + configuration.USERS_TABLE_PATH)
+# authToken = get_auth_token();
+#
+# kits_response = get_kits(authToken);
+# kits = kits_response.json();
+#
+# print(kits);
 
-
-def post_new_user(body):
-    return requests.post(configuration.URL_SERVICE + configuration.CREATE_USER_PATH,  # подставялем полный url
-                         json=body,  # тут тело
-                         headers=data.headers)  # а здесь заголовки
-
-def post_products_kits(products_ids):
-    return requests.post(configuration.URL_SERVICE + configuration.PRODUCTS_KITS_PATH,json=products_ids,  # подставялем полный url
-                         headers=data.headers)  # а здесь заголовки
-
-
-
-
-# response = post_products_kits(data.product_ids)
-# print(response.status_code)
-# print(response.json())
-
-
+# Тест 1. Успешное создание пользователя
+# Параметр fisrtName состоит из 2 символов
 
 
 

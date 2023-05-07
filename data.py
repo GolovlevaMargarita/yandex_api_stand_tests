@@ -3,11 +3,11 @@ headers = {
 }
 
 user_body = {
-    "firstName": "Анатолий",
-    "phone": "+79995553322",
-    "address": "г. Москва, ул. Пушкина, д. 10"
+    "firstName": "Онотолий",
+    "phone": "+79995553666",
+    "address": "г. Москва, ул. Юности, д. 10"
 }
 
-product_ids = {
-    "ids": [1, 2, 3]
+kit_body = {
+    "name": "a"
 }
